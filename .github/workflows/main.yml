@@ -28,7 +28,7 @@ jobs:
       # 关键步骤：动态生成 secrets.yaml
       - name: Generate secrets.yaml
         run: |
-          cat > secrets.yaml <<EOF
+          cat > lvgl/secrets.yaml <<EOF
           wifi_ssid: "${{ secrets.WIFI_SSID }}"
           wifi_password: "${{ secrets.WIFI_PASSWORD }}"
           EOF
