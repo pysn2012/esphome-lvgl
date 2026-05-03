@@ -260,12 +260,12 @@ lvgl:
   top_layer:
     bg_color: 0x000000
     bg_opa: cover
+    pad_all: 0px
     layout:
       type: flex
       flex_flow: ROW
       flex_align_main: SPACE_EVENLY
       flex_align_cross: CENTER
-      pad_all: 0px
     widgets:
       - button:
           id: btn_tab_env
