@@ -170,7 +170,6 @@ touchscreen:
 lvgl:
   displays:
     - s3_box_lcd
-  update_when_display_idle: true
   default_font: cn_font
 
   pages:
