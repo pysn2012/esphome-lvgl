@@ -57,31 +57,6 @@ font:
     glyphs: ${allowed_characters}   # 只加载指定字符
     ignore_missing_glyphs: true     # 忽略字体中缺失的字符，不报错
 
-# 按钮：GPIO0 作为左上角按钮，长按10秒触发恢复出厂设置
-button:
-  - platform: factory_reset
-    id: factory_reset_btn
-    internal: true
-
-binary_sensor:
-  - platform: gpio
-    pin:
-      number: GPIO0
-      mode: INPUT_PULLUP
-      inverted: true
-    id: left_top_button
-    internal: true
-    on_multi_click:
-      - timing:
-          - ON for at least 50ms
-          - OFF for at least 50ms
-        then:
-          - switch.turn_off: timer_ringing
-      - timing:
-          - ON for at least 10s
-        then:
-          - button.press: factory_reset_btn
-
 # 屏幕背光控制 (GPIO47)
 output:
   - platform: ledc
