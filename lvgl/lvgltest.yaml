@@ -207,7 +207,6 @@ lvgl:
         grid_columns: [ FR(1), FR(1) ]
         pad_row: 12px
         pad_column: 12px
-        pad_all: 8px
       widgets:
         # --- 标题栏 ---
         - label:
