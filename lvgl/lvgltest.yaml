@@ -3,7 +3,7 @@ substitutions:
   name: esp32-s3-box-3
   friendly_name: ESP32 S3 Box 3
   allowed_characters: |-
-    环境电池温度湿度电压电量·！@#￥%…&*（）—+-=、|【{}】；：‘“”，《。》/？℃℉￡ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!$^()_[]\;:'",<.>?
+    环境电池温度湿压量·！@#￥%…&*（）—+-=、|【{}】；：‘“”，《。》/？℃℉￡ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`!$^()_[]\;:'",<.>?
 
 esphome:
   name: ${name}
