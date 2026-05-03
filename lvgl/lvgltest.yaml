@@ -12,9 +12,6 @@ esphome:
   friendly_name: ${friendly_name}
   min_version: 2025.5.0  # 要求的最低ESPHome版本
   name_add_mac_suffix: true  # 设备名后缀添加MAC地址，避免冲突
-  project:
-    name: lvgl
-    version: dev
   on_boot:  # 开机启动逻辑
     priority: 600
     then:
