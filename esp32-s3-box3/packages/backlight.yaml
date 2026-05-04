@@ -1,0 +1,10 @@
+# 屏幕背光配置
+light:
+  - platform: monochromatic
+    name: Backlight
+    id: backlight
+    output: backlight_output
+    restore_mode: ALWAYS_ON
+    default_transition_length: 1s
+    internal: true
+

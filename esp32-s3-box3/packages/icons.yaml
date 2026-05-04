@@ -1,0 +1,61 @@
+# materialdesignicons-webfont.ttf
+
+# 图标字体
+font:
+  - file: "../fonts/materialdesignicons-webfont.ttf"
+    id: icon_font
+    size: 40
+    bpp: 4
+    glyphs: [
+      "\U000F0335",  # mdi-灯泡
+      "\U000F042B",  # mdi-3D打印机
+      "\U000F0D43",  # mdi-空气过滤器
+      "\U000F1051",  # mdi-LED灯带（变体）
+      "\U000F03D7",  # mdi-包裹（已关闭）
+      "\U000F07D6",  # mdi-LED灯带
+      "\U000F00AC",  # mdi-百叶窗（关闭）
+      "\U000F1011",  # mdi-百叶窗（打开）
+      "\U000F1A4C",  # mdi-夜灯
+      "\U000F1087",  # mdi-路由器网络
+      "\U000F036B",  # mdi-视频通话
+      "\U000F0614",  # mdi-应用程序轮廓
+      "\U000F0141",  # mdi-向左箭头
+      "\U000F0143",  # mdi-向上箭头
+      "\U000F0140",  # mdi-向下箭头
+      "\U000F089E",  # mdi-电池
+      "\U000F07DE",  # mdi-打印耗材（线材）
+      "\U000F0317",  # mdi-局域网（LAN）
+      "\U000F0425",  # mdi-电源
+      "\U000F050F",  # mdi-温度计
+      ]
+  - file: "../fonts/materialdesignicons-webfont.ttf"
+    id: icon_font_small
+    size: 20
+    bpp: 4
+    glyphs: [
+      "\U000F050F",  # mdi-温度计
+      ]
+
+# 将图标映射为易读的名称（用于 YAML 变量替换）
+substitutions:
+  lightbulb:      "\U000F0335"      # 灯泡
+  printer:        "\U000F042B"      # 3D打印机
+  aircon:         "\U000F0D43"      # 空调/空气净化器
+  ledstrip:       "\U000F1051"      # LED灯带
+  led_strip_variant: "\U000F1051"   # LED灯带（变体）
+  package:        "\U000F03D7"      # 包裹
+  lights:         "\U000F07D6"      # 灯光
+  blinds_closed:  "\U000F00AC"      # 百叶窗（关闭）
+  blinds_open:    "\U000F1011"      # 百叶窗（打开）
+  nightlight:     "\U000F1A4C"      # 夜灯
+  network:        "\U000F1087"      # 网络
+  videocall:      "\U000F036B"      # 视频通话
+  application:    "\U000F0614"      # 应用程序
+  chevron_left:   "\U000F0141"      # 左箭头
+  chevron_up:     "\U000F0143"      # 上箭头
+  chevron_down:   "\U000F0140"      # 下箭头
+  battery:        "\U000F089E"      # 电池
+  filament:       "\U000F07DE"      # 打印线材
+  lan:            "\U000F0317"      # 局域网
+  power:          "\U000F0425"      # 电源
+  thermometer:    "\U000F050F"      # 温度计

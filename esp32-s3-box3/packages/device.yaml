@@ -1,0 +1,75 @@
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  area: ${room}
+
+ota:
+  platform: esphome
+
+api:
+
+logger:
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+# 屏幕背光控制 (GPIO47)
+# - frequency: 150Hz PWM 频率（足够高以避免闪烁）
+# - min_power: 最低亮度级别（1% — 防止完全熄灭）
+# - zero_means_zero: 当设为 0 时，背光完全关闭
+# 此输出由 backlight.yaml 中的 backlight 组件使用
+output:
+  - platform: ledc
+    id: backlight_output
+    pin: GPIO47
+    frequency: 150Hz
+    min_power: 0.01
+    zero_means_zero: true
+
+# SPI总线
+spi:
+  - id: lcd_spi
+    clk_pin: GPIO7
+    mosi_pin: GPIO6
+
+# I2C总线 (用于触摸屏)
+i2c:
+  id: touchscreen_bus
+  sda: GPIO8
+  scl: GPIO18
+
+# 触摸屏 (GT911)
+touchscreen:
+  - platform: gt911
+    i2c_id: touchscreen_bus
+    address: 0x5D
+    id: tft_touch
+    display: tft_display
+    interrupt_pin:
+      number: GPIO3
+      ignore_strapping_warning: true
+
+# 显示屏(ILI9341)
+display:
+  - platform: ili9xxx
+    id: tft_display
+    dimensions:
+      width: 320
+      height: 240
+    model: S3BOX
+    invert_colors: false
+    data_rate: 40MHz
+    cs_pin: 5
+    dc_pin: 4
+    reset_pin:
+      number: 48
+      inverted: true
+    update_interval: never
+    update_interval: never
+    auto_clear_enabled: False
