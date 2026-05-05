@@ -148,7 +148,7 @@ lvgl:
               - label:
                   text_font: $icon_font
                   align: top_left
-                  text: $ledstrip
+                  text: $lightbulb
               - label:
                   align: bottom_left
                   text: "Led"
