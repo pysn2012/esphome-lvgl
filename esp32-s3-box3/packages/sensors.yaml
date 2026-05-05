@@ -75,35 +75,7 @@ sensor:
             format: "%d° / %d°"
             args: [ '(int)round(x)', '(int)round(id(office_temperature).state)' ]
 
-# =============================================================================
-# 文本传感器（字符串值）
-text_sensor:
-  # ===========================================================================
-  # 传感器：洗衣机工作状态
-  # 关联 UI 元素：
-  #   lvgl.yaml → heating_lab_mode_label
-  # ===========================================================================
-  - platform: homeassistant
-    entity_id: sensor.midjd8_cn_910150561_43_status_p_2_2
-    id: washing_machine_status
-    on_value:
-      - lvgl.label.update:
-          id: washing_machine_status_label
-          text: !lambda return x.c_str();
 
-  # ===========================================================================
-  # 传感器：天气预报
-
-  # 关联 UI 元素：
-  #   lvgl.yaml → print_progress_label
-  # ===========================================================================
-  - platform: homeassistant
-    entity_id: sensor.xiamen_forecast_minutely
-    id: xiamen_weather_minutely
-    on_value:
-      - lvgl.label.update:
-          id: xiamen_weather_minutely_label
-          text: !lambda return x.c_str();
 
 # =============================================================================
 # 二进制传感器（开/关状态）
