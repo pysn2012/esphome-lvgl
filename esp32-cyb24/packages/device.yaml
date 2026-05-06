@@ -71,6 +71,7 @@ display:
   - platform: mipi_spi
     id: tft_display
     model: ILI9341
+    spi_id: lcd_spi
     invert_colors: false
     data_rate: 40MHz
     cs_pin: 15
