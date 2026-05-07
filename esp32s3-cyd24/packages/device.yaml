@@ -74,9 +74,7 @@ display:
     invert_colors: false
     cs_pin: 14
     dc_pin: 13
-    reset_pin:
-      number: 15
-      inverted: true
+    reset_pin: 15
     update_interval: never
     auto_clear_enabled: false
     dimensions:
