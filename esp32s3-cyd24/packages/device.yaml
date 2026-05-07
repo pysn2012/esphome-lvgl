@@ -1,5 +1,6 @@
 esp32:
   variant: esp32s3
+  flash_size: 16MB
   framework:
     type: esp-idf
 
@@ -66,7 +67,7 @@ touchscreen:
 
 # 显示屏(ILI9341)
 display:
-  - platform: ili9xxx
+  - platform: mipi_spi
     id: tft_display
     model: ILI9341
     spi_id: lcd_spi

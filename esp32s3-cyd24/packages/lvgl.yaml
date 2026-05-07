@@ -13,6 +13,10 @@
 # =============================================================================
 
 lvgl:
+  displays:
+    - tft_display
+  touchscreens:
+    - touchscreen_id: tft_touch
   buffer_size: 100%
   top_layer:
     widgets:
