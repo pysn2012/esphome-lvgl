@@ -1,0 +1,20 @@
+# ESP32-S3-CYD2.4
+substitutions:
+  name: "esp32s3-cyd24"
+  friendly_name: "esp32s3-cyd24"
+
+# Wifi
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+# 导入组件
+packages:
+  device: !include packages/device.yaml
+  sensors: !include packages/sensors.yaml
+  lvgl: !include packages/lvgl.yaml
+  time: !include packages/time.yaml
+  network: !include packages/network.yaml
+  fonts: !include packages/fonts.yaml
+  icons: !include packages/icons.yaml
+  button: !include packages/button.yaml
