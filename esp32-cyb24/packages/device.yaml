@@ -67,7 +67,7 @@ touchscreen:
 
 # 显示屏(ILI9341)
 display:
-  - platform: mipi_spi
+  - platform: ili9xxx
     id: tft_display
     model: ILI9341
     spi_id: lcd_spi
