@@ -56,12 +56,12 @@ touchscreen:
     interrupt_pin: 8
     transform:
       swap_xy: false
-      mirror_x: false
-      mirror_y: false
+      mirror_x: true
+      mirror_y: true
     calibration:
       x_min: 600
-      x_max: 3450
-      y_min: 1350
+      x_max: 3520
+      y_min: 1250
       y_max: 4095
 
 
