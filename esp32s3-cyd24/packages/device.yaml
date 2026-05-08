@@ -62,7 +62,7 @@ touchscreen:
       x_min: 600
       x_max: 3450
       y_min: 1350
-      y_max: 4096
+      y_max: 4095
 
 
 # 显示屏(ILI9341)
