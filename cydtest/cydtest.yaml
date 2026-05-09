@@ -70,7 +70,7 @@ display:
     update_interval: 1s
     auto_clear_enabled: false
     transform:
-      swap_xy: true        # 转竖屏 240x320
+      swap_xy: false        # 转竖屏 240x320
       mirror_x: false
       mirror_y: false
     dimensions:
@@ -114,7 +114,7 @@ touchscreen:
     interrupt_pin: 8
     transform:
       swap_xy: false
-      mirror_x: false
+      mirror_x: true
       mirror_y: false
     calibration:
       x_min: 600
