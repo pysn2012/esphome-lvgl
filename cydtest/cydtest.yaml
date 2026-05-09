@@ -69,7 +69,7 @@ display:
     reset_pin: 15
     update_interval: 1s
     auto_clear_enabled: false
-    rotation: 0
+    rotation: 90
     dimensions:
       width: 320
       height: 240
@@ -86,8 +86,8 @@ display:
       
       // 四角红色十字（长度 30px）
       // 左上
-      it.line(5, 20, 35, 20, red);   // 横
-      it.line(20, 5, 20, 35, red);   // 竖
+      it.line(5, 20, 35, 20, green);   // 横
+      it.line(20, 5, 20, 35, green);   // 竖
       // 右上
       it.line(205, 20, 235, 20, red);
       it.line(220, 5, 220, 35, red);
@@ -120,6 +120,7 @@ touchscreen:
       y_max: 4095
     on_touch:
       - lambda: |-
-          ESP_LOGI("touch", "Mapped: x=%.1f, y=%.1f", touch.x, touch.y);
+          ESP_LOGI("touch", "Mapped: x=%d, y=%d, raw_x=%d, raw_y=%d", 
+                   touch.x, touch.y, touch.x_raw, touch.y_raw);
 
 
