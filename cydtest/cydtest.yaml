@@ -74,8 +74,8 @@ display:
       mirror_x: false
       mirror_y: false
     dimensions:
-      width: 320
-      height: 240
+      width: 240
+      height: 320
     lambda: |-
       // 黑色背景
       it.fill(Color::BLACK);
