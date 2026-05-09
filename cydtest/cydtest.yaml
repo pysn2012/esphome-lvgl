@@ -120,6 +120,6 @@ touchscreen:
       y_max: 4095
     on_touch:
       - lambda: |-
-          ESP_LOGI("touch", "Mapped: x=%.1f, y=%.1f", touch->get_x(), touch->get_y());
+          ESP_LOGI("touch", "Mapped: x=%.1f, y=%.1f", touch.get_x(), touch.get_y());
 
 
