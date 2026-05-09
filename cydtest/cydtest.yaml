@@ -1,0 +1,125 @@
+# ESP32-S3-CYD2.4
+substitutions:
+  name: "esp32s3-cyd24"
+  friendly_name: "esp32s3-cyd24"
+
+# Wifi
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+esp32:
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  min_version: 2025.5.0
+  name_add_mac_suffix: true
+
+ota:
+  platform: esphome
+
+api:
+
+logger:
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+# 屏幕背光控制 (GPIO47)
+# - frequency: 150Hz PWM 频率（足够高以避免闪烁）
+# - min_power: 最低亮度级别（1% — 防止完全熄灭）
+# - zero_means_zero: 当设为 0 时，背光完全关闭
+output:
+  - platform: ledc
+    id: backlight_output
+    pin: GPIO4
+
+# 屏幕背光配置
+light:
+  - platform: monochromatic
+    name: Backlight
+    id: backlight
+    output: backlight_output
+    restore_mode: ALWAYS_ON
+    default_transition_length: 1s
+    internal: true
+
+# SPI总线
+spi:
+  - id: lcd_spi
+    clk_pin: GPIO18
+    mosi_pin: GPIO17
+    miso_pin: GPIO16
+
+# 显示屏(ILI9341)
+display:
+  - platform: mipi_spi
+    id: tft_display
+    model: ILI9341
+    spi_id: lcd_spi
+    invert_colors: false
+    cs_pin: 14
+    dc_pin: 13
+    reset_pin: 15
+    update_interval: 1s
+    auto_clear_enabled: false
+    rotation: 0
+    dimensions:
+      width: 320
+      height: 240
+    lambda: |-
+      // 黑色背景
+      it.fill(Color::BLACK);
+      
+      auto red   = Color(255, 0, 0);
+      auto green = Color(0, 255, 0);
+      auto white = Color(255, 255, 255);
+      
+      // 白色边框（留边距 5px）
+      it.rectangle(5, 5, 230, 310, white);
+      
+      // 四角红色十字（长度 30px）
+      // 左上
+      it.line(5, 20, 35, 20, red);   // 横
+      it.line(20, 5, 20, 35, red);   // 竖
+      // 右上
+      it.line(205, 20, 235, 20, red);
+      it.line(220, 5, 220, 35, red);
+      // 左下
+      it.line(5, 300, 35, 300, red);
+      it.line(20, 285, 20, 315, red);
+      // 右下
+      it.line(205, 300, 235, 300, red);
+      it.line(220, 285, 220, 315, red);
+      
+      // 中心绿色十字
+      it.line(105, 160, 135, 160, green);
+      it.line(120, 145, 120, 175, green);
+
+# 触摸屏 (xpt2046)
+touchscreen:
+  - platform: xpt2046
+    id: tft_touch
+    spi_id: lcd_spi
+    cs_pin: 5
+    interrupt_pin: 8
+    transform:
+      swap_xy: false
+      mirror_x: false
+      mirror_y: false
+    calibration:
+      x_min: 600
+      x_max: 3520
+      y_min: 1250
+      y_max: 4095
+    on_touch:
+      - lambda: |-
+          ESP_LOGI("touch", "Mapped: x=%.1f, y=%.1f", touch->get_x(), touch->get_y());
+
+
