@@ -15,7 +15,7 @@ font:
       "\U000F0143",  # mdi-向上箭头
       "\U000F0140",  # mdi-向下箭头
       "\U000F089E",  # mdi-电池
-      "\U000F0317",  # mdi-局域网（LAN）
+      "\U000F05A9",  # mdi-WIFI
       "\U000F0425",  # mdi-电源
       "\U000F050F",  # mdi-温度计
       "\U000F02DC",   # 客厅
@@ -39,7 +39,7 @@ substitutions:
   chevron_up:     "\U000F0143"      # 上箭头
   chevron_down:   "\U000F0140"      # 下箭头
   battery:        "\U000F089E"      # 电池
-  lan:            "\U000F0317"      # 局域网
+  wifi:            "\U000F05A9"      # WIFI
   power:          "\U000F0425"      # 电源
   thermometer:    "\U000F050F"      # 温度计
   homeicon:       "\U000F02DC"      # 客厅

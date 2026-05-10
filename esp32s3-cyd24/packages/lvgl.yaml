@@ -22,7 +22,7 @@ lvgl:
       - obj:
           align: bottom_mid
           width: 100%
-          height: 56
+          height: 55
           bg_color: Black
           bg_opa: cover
           pad_all: 4
@@ -78,7 +78,7 @@ lvgl:
                   - label:
                       text_font: $icon_font
                       align: center
-                      text: $network
+                      text: $wifi
                 on_click:
                   - lvgl.page.show: network_page
           
@@ -97,7 +97,7 @@ lvgl:
       pad_top: 36
       pad_bottom: 60
       pad_left: 10
-      pad_right: 10
+      pad_right: 5
       
       widgets:        
         # 中部信息区 - 纯文字，无容器无底色
@@ -111,7 +111,7 @@ lvgl:
             pad_bottom: 6
         - label:
             id: air_info
-            text: "     --hPa/--PPM"
+            text: "--hPa/--PPM"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: left
@@ -123,6 +123,7 @@ lvgl:
             text_color: 0xFF8C00
             text_font: cn_font
             text_align: left
+            long_mode: wrap
             pad_top: 6
             pad_bottom: 6
         - label:
@@ -132,15 +133,15 @@ lvgl:
             text_font: cn_font
             text_align: left
             pad_top: 6
-            pad_bottom: 20
+            pad_bottom: 10
 
-    # ===== 灯光页 =====
+    # ===== 灯光页（屏幕亮度控制）=====
     - id: light_page
       layout:
         type: flex
         flex_flow: column
-        flex_align_main: start
-        flex_align_cross: stretch
+        flex_align_main: center
+        flex_align_cross: center
       scrollbar_mode: "off"
       width: 100%
       bg_color: Black
@@ -151,20 +152,31 @@ lvgl:
       pad_right: 10
 
       widgets:
-        - label:
-            text: "灯光控制"
-            text_color: 0xFFFFFF
-            text_font: cn_font
-            text_align: left
-            pad_top: 20
-            pad_bottom: 10
+        - arc:
+            id: brightness_arc
+            width: 180
+            height: 180
+            min_value: 0
+            max_value: 100
+            value: 80
+            start_angle: 135
+            end_angle: 45
+            bg_color: 0x333333
+            indicator_color: 0xFF8C00
+            knob_color: 0xFFFFFF
+            on_value:
+              then:
+                - light.turn_on:
+                    id: backlight
+                    brightness: !lambda |-
+                      return x / 100.0;
 
     # 插座页面
     - id: socket_page
       layout:
         type: grid
         grid_columns: [fr(1), fr(1)]
-        grid_rows: [fr(1), fr(1), fr(1)]
+        grid_rows: [fr(1), fr(1)]
       scrollbar_mode: "off"
       scroll_dir: "hor"
       width: 100%
@@ -269,7 +281,7 @@ lvgl:
       pad_top: 36
       pad_bottom: 60
       pad_left: 10
-      pad_right: 10
+      pad_right: 5
 
       widgets:
         - label:
