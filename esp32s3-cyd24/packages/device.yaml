@@ -55,9 +55,9 @@ touchscreen:
     cs_pin: 5
     interrupt_pin: 8
     transform:
-      swap_xy: true
+      swap_xy: false
       mirror_x: false
-      mirror_y: false
+      mirror_y: true
     calibration:
       x_min: 600
       x_max: 3520
@@ -77,10 +77,10 @@ display:
     reset_pin: 15
     update_interval: never
     auto_clear_enabled: false
-    dimensions:
-      width: 320
-      height: 240
     transform:
-      swap_xy: true
-      mirror_x: false
+      swap_xy: false        # 转竖屏 240x320
+      mirror_x: true
       mirror_y: false
+    dimensions:
+      width: 240
+      height: 320
