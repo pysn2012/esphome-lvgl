@@ -26,7 +26,7 @@ sensor:
         - lvgl.label.update:
             id: network_wifi
             text: !lambda |-
-              return str_sprintf("WiFi: %.0fdB/%.0f%%", x, min(max(2 * (x + 100.0), 
+              return str_sprintf("WiFi: %.0fdB/%.0f%%", x, min(max(2 * (x + 100.0), 0.0), 100.0));
 
 # Wifi信号强度--百分比
   - platform: copy
