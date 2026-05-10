@@ -1,6 +1,6 @@
 # ======常规传感器（数值型）======
 sensor:
-  # 厦门天气
+  # 室外温度
   - platform: homeassistant
     name: xiamen temperature
     entity_id: sensor.xiamen_temperature
@@ -9,10 +9,11 @@ sensor:
     on_value:
       then:
         - lvgl.label.update:
-            id: outdoor_temp_display
+            id: outdoor_info
             text: !lambda |-
-              return str_sprintf("%.1f°C", x);
+              return str_sprintf("室外：%.1f℃/%.0f%%", x, id(xiamen_humi).state);
 
+  # 室外湿度
   - platform: homeassistant
     name: xiamen humidity
     id: xiamen_humi
@@ -20,11 +21,11 @@ sensor:
     on_value:
       then:
         - lvgl.label.update:
-            id: outdoor_humi_display
+            id: outdoor_info
             text: !lambda |-
-              return str_sprintf("%.0f%%", x);
+              return str_sprintf("室外：%.1f℃/%.0f%%", id(xiamen_temp).state, x);
 
-  # 小米温湿度计
+  # 室内温度
   - platform: homeassistant
     name: xiaomi temperature
     entity_id: sensor.cleargras_cn_blt_3_u5c2qgggk400_dk1_temperature_p_2_1
@@ -33,10 +34,11 @@ sensor:
     on_value:
       then:
         - lvgl.label.update:
-            id: indoor_temp_display
+            id: indoor_info
             text: !lambda |-
-              return str_sprintf("%.1f°C", x);
+              return str_sprintf("室内：%.1f℃/%.0f%%", x, id(xiaomi_humi).state);
 
+  # 室内湿度
   - platform: homeassistant
     name: xiaomi humidity
     id: xiaomi_humi
@@ -44,9 +46,9 @@ sensor:
     on_value:
       then:
         - lvgl.label.update:
-            id: indoor_humi_display
+            id: indoor_info
             text: !lambda |-
-              return str_sprintf("%.0f%%", x);
+              return str_sprintf("室内：%.1f℃/%.0f%%", id(xiaomi_temp).state, x);
 
 # ======二进制传感器（开/关状态）======
 binary_sensor:

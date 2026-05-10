@@ -26,7 +26,6 @@ lvgl:
         flex_align_main: start        # 主轴：从顶部开始排列
         flex_align_cross: stretch     # 交叉轴：子元素宽度拉伸填满
         flex_align_track: start
-        pad_row: 8                    # 子元素之间的垂直间距
       scrollbar_mode: "off"
       width: 100%
       bg_color: Black
@@ -38,110 +37,71 @@ lvgl:
 
       
       widgets:        
-        # ===== 室外环境卡片 =====
+        # 中部信息区（占据剩余空间，内容垂直居中）
         - obj:
             width: 100%
-            height: 70
-            radius: $radius
-            bg_color: 0x1E1E1E
-            pad_all: 6
+            flex_grow: 1
             layout:
               type: flex
               flex_flow: column
               flex_align_main: center
               flex_align_cross: center
+              pad_row: 16
             widgets:
               - label:
-                  text: "室外 · 厦门"
-                  text_color: 0x888888
+                  id: outdoor_info
+                  text: "室外：--℃/--%"
+                  text_color: 0xFFFFFF
                   text_font: cn_font
-                  height: 18
-              - obj:
-                  width: 100%
-                  height: 36
-                  layout:
-                    type: flex
-                    flex_flow: row
-                    flex_align_main: space_evenly
-                    flex_align_cross: center
-                  widgets:
-                    - label:
-                        id: outdoor_temp_display
-                        text: "--℃"
-                        text_color: 0xFFFFFF
-                        text_font: cn_font
-                    - label:
-                        id: outdoor_humi_display
-                        text: "--%"
-                        text_color: 0xFFFFFF
-                        text_font: cn_font
+                  text_align: center
+              - label:
+                  id: indoor_info
+                  text: "室内：--℃/--%"
+                  text_color: 0xFFFFFF
+                  text_font: cn_font
+                  text_align: center
+              - label:
+                  id: weather_alert_text
+                  text: "预警：加载中..."
+                  text_color: 0xFF8C00
+                  text_font: cn_font
+                  text_align: center
 
-        # ===== 室内环境卡片 =====
+        # 底部按钮区
         - obj:
             width: 100%
-            height: 70
-            radius: $radius
-            bg_color: 0x1E1E1E
-            pad_all: 6
+            height: 80
             layout:
               type: flex
-              flex_flow: column
+              flex_flow: row
               flex_align_main: center
               flex_align_cross: center
+              pad_column: 30
             widgets:
-              - label:
-                  text: "室内环境"
-                  text_color: 0x888888
-                  text_font: cn_font
-                  height: 18
-              - obj:
-                  width: 100%
-                  height: 36
-                  layout:
-                    type: flex
-                    flex_flow: row
-                    flex_align_main: space_evenly
-                    flex_align_cross: center
+              - button:
+                  height: 56px
+                  width: 56px
+                  radius: $radius
+                  styles: control
                   widgets:
                     - label:
-                        id: indoor_temp_display
-                        text: "--℃"
-                        text_color: 0xFFFFFF
-                        text_font: cn_font
+                        text_font: $icon_font
+                        align: center
+                        text: "\U000F02DC"
+                  on_click:
+                    - lvgl.page.show: extras_page
+              - button:
+                  height: 56px
+                  width: 56px
+                  radius: $radius
+                  styles: control
+                  widgets:
                     - label:
-                        id: indoor_humi_display
-                        text: "--%"
-                        text_color: 0xFFFFFF
-                        text_font: cn_font
-
-        # ===== 天气预警文本 =====
-        - label:
-            id: weather_alert_text
-            text: "天气预警: 加载中..."
-            text_color: 0xFF8C00
-            text_font: cn_font
-            text_align: center
-            width: 100%
-            height: 32
-
-        # ===== 插座页导航按钮 =====
-        - button:
-            height: $button_height_single
-            width: 100%
-            checkable: false
-            id: extras_nav_button
-            styles: control
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "插座控制"
-                  text_font: cn_font
-            on_click:
-              - lvgl.page.show: extras_page
+                        text_font: $icon_font
+                        align: center
+                        text: "\U000F0905"
+                  on_click:
+                    - lvgl.page.show: extras_page
 
     # 附加控制页面
     - id: extras_page
