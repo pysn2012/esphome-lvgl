@@ -36,7 +36,7 @@ sensor:
         - lvgl.label.update:
             id: air_info
             text: !lambda |-
-              return str_sprintf("     气压%.0fhPa", x);
+              return str_sprintf("          气压%.0fhPa", x);
 
   # 室内温度
   - platform: homeassistant

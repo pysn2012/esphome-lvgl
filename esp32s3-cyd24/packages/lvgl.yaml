@@ -104,7 +104,7 @@ lvgl:
         - label:
             id: outdoor_info
             width: 100%
-            text: "室外：--℃/--%"
+            text: "室外：温度--℃/湿度--%"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: left
@@ -113,7 +113,7 @@ lvgl:
         - label:
             id: air_info
             width: 100%
-            text: "     气压--hPa"
+            text: "          气压--hPa"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: left
@@ -132,7 +132,7 @@ lvgl:
         - label:
             id: indoor_info
             width: 100%
-            text: "室内：--℃/--%"
+            text: "室内：温度--℃/湿度--%"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: left
