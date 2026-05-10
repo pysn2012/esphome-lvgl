@@ -1,12 +1,8 @@
 # 时间同步
 time:
-  - platform: sntp
-    id: sntp_time
+  - platform: homeassistant
+    id: ha_time
     timezone: Asia/Shanghai
-    servers:
-     - cn.pool.ntp.org
-     - ntp.aliyun.com 
-     - ntp.tencent.com
     on_time_sync:
       - script.execute: time_update
     on_time:
@@ -24,7 +20,7 @@ script:
           id: display_time
           text: !lambda |-
             static char dt_buf[20]; // "YYYY-MM-DD HH:MM" + \0 → 最多17字符，20足够
-            auto now = id(sntp_time).now();
+            auto now = id(ha_time).now();
             snprintf(dt_buf, sizeof(dt_buf), "%04d-%02d-%02d %02d:%02d",
                      now.year, now.month, now.day_of_month,
                      now.hour, now.minute);
