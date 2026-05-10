@@ -9,6 +9,16 @@ font:
     glyphs: ${allowed_characters}   # 只加载指定字符
     ignore_missing_glyphs: true     # 忽略字体中缺失的字符，不报错
 
+  - file: "gfonts://Roboto"
+    id: roboto19_font
+    size: 19
+    bpp: 4
+
+  - file: "gfonts://Roboto"
+    id: roboto15_font
+    size: 15
+    bpp: 4
+
 lvgl:
   style_definitions:
     - id: roboto15_style
