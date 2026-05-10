@@ -10,7 +10,7 @@ lvgl:
       # 显示时间（顶部居中）
       - label:
           text: "----/--/-- --:--"
-          id: display_datetime
+          id: display_time
           styles: roboto15_style
           align: top_mid
           x: 0
