@@ -36,7 +36,7 @@ sensor:
         - lvgl.label.update:
             id: air_info
             text: !lambda |-
-              return str_sprintf("     气压%.1fhPa/PM2.5 %.0f", id(xiamen_pressure).state, x);
+              return str_sprintf("     气压%.1fhPa/PM2.5 %.0fPPM", x, id(xiamen_pressure).state);
   # PM2.5
   - platform: homeassistant
     name: xiamen pm25
@@ -47,7 +47,7 @@ sensor:
         - lvgl.label.update:
             id: air_info
             text: !lambda |-
-              return str_sprintf("     气压%.1fhPa/PM2.5 %.0f", id(xiamen_pm25).state, x);
+              return str_sprintf("     气压%.1fhPa/PM2.5 %.0fPPM", id(xiamen_pm25).state, x);
 
   # 室内温度
   - platform: homeassistant
@@ -60,7 +60,7 @@ sensor:
         - lvgl.label.update:
             id: indoor_info
             text: !lambda |-
-              return str_sprintf("室内：%.1f℃/%.0f%%", x, id(xiaomi_humi).state);
+              return str_sprintf("室内：温度%.1f℃/湿度%.0f%%", x, id(xiaomi_humi).state);
 
   # 室内湿度
   - platform: homeassistant
@@ -72,7 +72,7 @@ sensor:
         - lvgl.label.update:
             id: indoor_info
             text: !lambda |-
-              return str_sprintf("室内：%.1f℃/%.0f%%", id(xiaomi_temp).state, x);
+              return str_sprintf("室内：温度%.1f℃/湿度%.0f%%", id(xiaomi_temp).state, x);
 
 # ======二进制传感器（开/关状态）======
 binary_sensor:
