@@ -36,18 +36,7 @@ sensor:
         - lvgl.label.update:
             id: air_info
             text: !lambda |-
-              return str_sprintf("气压%.1fhPa/PM2.5 %.0fPPM", x, id(xiamen_pressure).state);
-  # PM2.5
-  - platform: homeassistant
-    name: xiamen pm25
-    id: xiamen_pm25
-    entity_id: sensor.xiamen_pm25
-    on_value:
-      then:
-        - lvgl.label.update:
-            id: air_info
-            text: !lambda |-
-              return str_sprintf("气压%.1fhPa/PM2.5 %.0fPPM", id(xiamen_pm25).state, x);
+              return str_sprintf("     气压%.0fhPa", x);
 
   # 室内温度
   - platform: homeassistant

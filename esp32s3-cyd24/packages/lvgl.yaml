@@ -113,7 +113,7 @@ lvgl:
         - label:
             id: air_info
             width: 100%
-            text: "--hPa/--PPM"
+            text: "     气压--hPa"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: left
