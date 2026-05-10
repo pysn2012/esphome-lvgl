@@ -18,8 +18,8 @@ font:
       "\U000F0317",  # mdi-局域网（LAN）
       "\U000F0425",  # mdi-电源
       "\U000F050F",  # mdi-温度计
-      "\U000F02DC"   # 客厅
-      "\U000F0905"   # 插座
+      "\U000F02DC",   # 客厅
+      "\U000F0905",   # 插座
       ]
   - file: "../fonts/materialdesignicons-webfont.ttf"
     id: icon_font_small
@@ -42,5 +42,5 @@ substitutions:
   lan:            "\U000F0317"      # 局域网
   power:          "\U000F0425"      # 电源
   thermometer:    "\U000F050F"      # 温度计
-  homeicon:           "\U000F02DC"      # 客厅
+  homeicon:       "\U000F02DC"      # 客厅
   socket:         "\U000F0905"      # 插座
