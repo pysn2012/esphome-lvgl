@@ -17,6 +17,70 @@ lvgl:
           y: 4
           text_align: center
           text_color: 0xFFFFFF
+
+      # 底部导航按键
+      - obj:
+          align: bottom_mid
+          width: 100%
+          height: 50
+          bg_color: Black
+          bg_opa: cover
+          pad_all: 4
+          border_width: 0
+          layout:
+            type: flex
+            flex_flow: row
+            flex_align_main: space_evenly
+            flex_align_cross: center
+          widgets:
+            - button:
+                height: 45px
+                width: 45px
+                radius: $radius
+                styles: control
+                widgets:
+                  - label:
+                      text_font: $icon_font
+                      align: center
+                      text: $homeicon
+                on_click:
+                  - lvgl.page.show: main_page
+            - button:
+                height: 45px
+                width: 45px
+                radius: $radius
+                styles: control
+                widgets:
+                  - label:
+                      text_font: $icon_font
+                      align: center
+                      text: $lightbulb
+                on_click:
+                  - lvgl.page.show: light_page
+            - button:
+                height: 45px
+                width: 45px
+                radius: $radius
+                styles: control
+                widgets:
+                  - label:
+                      text_font: $icon_font
+                      align: center
+                      text: $socket
+                on_click:
+                  - lvgl.page.show: socket_page
+            - button:
+                height: 45px
+                width: 45px
+                radius: $radius
+                styles: control
+                widgets:
+                  - label:
+                      text_font: $icon_font
+                      align: center
+                      text: $network
+                on_click:
+                  - lvgl.page.show: network_page
           
   pages:
     - id: main_page
@@ -46,8 +110,8 @@ lvgl:
             pad_top: 20
             pad_bottom: 6
         - label:
-            id: indoor_info
-            text: "室内：--℃/--%"
+            id: air_info
+            text: "     --hPa/--PPM"
             text_color: 0xFFFFFF
             text_font: cn_font
             text_align: center
@@ -60,25 +124,43 @@ lvgl:
             text_font: cn_font
             text_align: center
             pad_top: 6
+            pad_bottom: 6
+        - label:
+            id: indoor_info
+            text: "室内：--℃/--%"
+            text_color: 0xFFFFFF
+            text_font: cn_font
+            text_align: center
+            pad_top: 6
             pad_bottom: 20
 
-        # 底部按钮区
-        - button:
-            height: 50px
-            width: 50px
-            radius: $radius
-            styles: control
-            pad_top: 10
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: center
-                  text: $socket
-            on_click:
-              - lvgl.page.show: extras_page
+    # ===== 灯光页 =====
+    - id: light_page
+      layout:
+        type: flex
+        flex_flow: column
+        flex_align_main: start
+        flex_align_cross: stretch
+      scrollbar_mode: "off"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 36
+      pad_bottom: 64
+      pad_left: 10
+      pad_right: 10
 
-    # 附加控制页面
-    - id: extras_page
+      widgets:
+        - label:
+            text: "灯光控制"
+            text_color: 0xFFFFFF
+            text_font: cn_font
+            text_align: center
+            pad_top: 20
+            pad_bottom: 10
+
+    # 插座页面
+    - id: socket_page
       layout:
         type: grid
         grid_columns: [fr(1), fr(1)]
@@ -94,27 +176,6 @@ lvgl:
       pad_right: 5
 
       widgets:
-        # 按钮：主页（回到主页面）
-        - button:
-            height: $button_height_single
-            width: $button_width
-            checkable: false
-            id: extras_back_button
-            styles: control
-            grid_cell_column_pos: 0
-            grid_cell_row_pos: 0
-            widgets:
-              - label:
-                  text_font: $icon_font
-                  align: top_left
-                  text: $chevron_left
-              - label:
-                  align: bottom_left
-                  text: "主页"
-                  text_font: cn_font
-            on_click:
-              - lvgl.page.show: main_page
-
        # 按钮：插座1
         - button: 
             height: $button_height_single
@@ -122,7 +183,7 @@ lvgl:
             checkable: true
             id: chuangmi_socket1_button
             styles: control
-            grid_cell_column_pos: 1
+            grid_cell_column_pos: 0
             grid_cell_row_pos: 0
             widgets:
               - label:
@@ -148,8 +209,8 @@ lvgl:
             checkable: true
             id: chuangmi_socket2_button
             styles: control
-            grid_cell_column_pos: 0
-            grid_cell_row_pos: 1
+            grid_cell_column_pos: 1
+            grid_cell_row_pos: 0
             widgets:
               - label:
                   text_font: $icon_font
@@ -174,7 +235,7 @@ lvgl:
             checkable: true
             id: chuangmi_socket3_button
             styles: control
-            grid_cell_column_pos: 1
+            grid_cell_column_pos: 0
             grid_cell_row_pos: 1
             widgets:
               - label:
@@ -193,4 +254,38 @@ lvgl:
                   data:
                     entity_id: switch.chuangmi_cn_125520813_m3_on_p_2_1
 
+    # ===== 网络页 =====
+    - id: network_page
+      layout:
+        type: flex
+        flex_flow: column
+        flex_align_main: start
+        flex_align_cross: stretch
+        flex_align_track: start
+      scrollbar_mode: "off"
+      width: 100%
+      bg_color: Black
+      bg_opa: cover
+      pad_top: 36
+      pad_bottom: 64
+      pad_left: 10
+      pad_right: 10
+
+      widgets:
+        - label:
+            id: network_ip
+            text: "IP: 获取中..."
+            text_color: 0xFFFFFF
+            text_font: cn_font
+            text_align: left
+            pad_top: 20
+            pad_bottom: 6
+        - label:
+            id: network_wifi
+            text: "WiFi: --dB/--%"
+            text_color: 0xFFFFFF
+            text_font: cn_font
+            text_align: left
+            pad_top: 6
+            pad_bottom: 20
 
